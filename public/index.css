@@ -1,0 +1,85 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+html,
+section {
+  background-color: #394c6e;
+}
+.box {
+  display: none;
+  border-radius: 4px;
+  width: 60%;
+  position: fixed;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
+    rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+@media (max-width: 764px) {
+  .box {
+    width: 90%;
+    top: 70%;
+  }
+}
+.card {
+  border: none;
+}
+.card-body input {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+.card-body input,
+.card-body textarea {
+  width: 100%;
+  border: none;
+  outline: none;
+}
+
+.date-text {
+  font-size: 0.8rem;
+}
+.menu-bar {
+  position: fixed;
+  display: none;
+  z-index: 1;
+  left: 6px;
+  top: 72px;
+  bottom: 70px;
+  padding: 100px;
+  background-color: #71c9ce;
+  border-radius: 10px;
+}
+.close-btn {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  color: #ffffff;
+}
+.drawer {
+  background-color: #003157;
+  height: 100vh;
+}
+
+/******* Masonry Grid Css *******/
+.my-masonry-grid {
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  margin-left: -20px; /* gutter size offset */
+  width: auto;
+}
+.my-masonry-grid_column {
+  padding-left: 20px; /* gutter size */
+  background-clip: padding-box;
+}
+
+/* Style your items */
+.my-masonry-grid_column > div {
+  /* change div to reference your elements you put in <Masonry> */
+  background-color: #6c757d;
+  margin-bottom: 20px;
+}
