@@ -19,6 +19,8 @@ import MailIcon from "@mui/icons-material/Mail";
 import MuiAppBar from "@mui/material/AppBar";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
+import Popover from "@mui/material/Popover";
+import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 
 const drawerWidth = 240;
 
@@ -58,10 +60,9 @@ const Search = styled("div")(({ theme }) => ({
     backgroundColor: "#393E46",
   },
   marginLeft: 0,
-  width: "50%",
-  [theme.breakpoints.up("sm")]: {
+  width: "20%",
+  [theme.breakpoints.down("md")]: {
     marginLeft: theme.spacing(1),
-    width: "auto",
   },
 }));
 
@@ -103,6 +104,7 @@ export default function Header(props) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
   return (
     <section>
       <Box sx={{ display: "flex" }}>
@@ -131,7 +133,7 @@ export default function Header(props) {
             >
               Notes
             </Typography>
-            <Search className="me-3">
+            <Search className="d-none d-md-block">
               <SearchIconWrapper>
                 <SearchIcon />
               </SearchIconWrapper>
@@ -140,6 +142,39 @@ export default function Header(props) {
                 inputProps={{ "aria-label": "search" }}
               />
             </Search>
+
+            <PopupState variant="popover" popupId="demo-popup-popover">
+              {(popupState) => (
+                <div>
+                  <IconButton
+                    className="text-white d-block d-md-none"
+                    variant="contained"
+                    {...bindTrigger(popupState)}
+                  >
+                    <SearchIcon />
+                  </IconButton>
+                  <Popover
+                    {...bindPopover(popupState)}
+                    anchorOrigin={{
+                      vertical: "bottom",
+                      horizontal: "center",
+                    }}
+                    transformOrigin={{
+                      vertical: "top",
+                      horizontal: "center",
+                    }}
+                  >
+                    <div className="px-3 py-2">
+                      <input
+                        className="Search-box"
+                        type="search"
+                        placeholder="Search..."
+                      />
+                    </div>
+                  </Popover>
+                </div>
+              )}
+            </PopupState>
           </Toolbar>
         </AppBar>
       </Box>
