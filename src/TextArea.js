@@ -31,15 +31,12 @@ export default function TextArea(props) {
 
   return (
     <div id="box" className="box fixed">
-      <div className="card " style={{ backgroundColor: props.darkMode2 }}>
-        <div
-          className="card-body "
-          style={{ backgroundColor: props.darkMode2 }}
-        >
+      <div className="card " style={{ backgroundColor: "#00ADB5" }}>
+        <div className="card-body " style={{ backgroundColor: "#00ADB5" }}>
           <form action="/">
             <input
               className=" text-white"
-              style={{ backgroundColor: props.darkMode2 }}
+              style={{ backgroundColor: "#00ADB5" }}
               onChange={handleChange}
               type="text"
               name="title"
@@ -50,8 +47,8 @@ export default function TextArea(props) {
             />
             <br />
             <textarea
-              style={{ backgroundColor: props.darkMode2 }}
-              className=" text-white"
+              className="text-white"
+              style={{ backgroundColor: "#00ADB5" }}
               onChange={handleChange}
               name="content"
               rows="2"
@@ -62,15 +59,15 @@ export default function TextArea(props) {
             <br />
             <div className="d-flex justify-content-between text-align-center mt-4">
               <Fab
-                className=" text-white"
+                className=" text-secondary"
                 type="submit"
                 variant="extended"
                 aria-label="add"
                 onClick={submitNote}
-                style={{ backgroundColor: props.darkMode1 }}
+                style={{ backgroundColor: "#EEEEEE" }}
               >
                 <AddIcon />
-                <span className="ms-2 fw-bold text-white">Add Note</span>
+                <span className="ms-2 fw-bold text-secondary">Add Note</span>
               </Fab>
 
               <div

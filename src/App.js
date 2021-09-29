@@ -1,13 +1,21 @@
 import React, { useState } from "react";
-import BottomAppBar from "./BottomAppBar";
 import Header from "./Header";
+import SearchBar from "./SearchBar";
 import TextArea from "./TextArea";
 import Note from "./Note";
 import Masonry from "react-masonry-css";
-function App() {
-  let darkPrimary = "#003157";
-  let darkMain = "#001a2e";
+import { Fab } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import AddIcon from "@mui/icons-material/Add";
 
+const StyledFab = styled(Fab)({
+  position: "absolute",
+  zIndex: 1,
+  top: -30,
+  right: 34,
+});
+
+function App() {
   const [notes, setNotes] = useState([]);
   const breakpoints = {
     default: 4,
@@ -41,8 +49,8 @@ function App() {
     var x = document.getElementById("box");
     x.style.display = "none";
   }
-  function showMenuBar() {
-    var x = document.getElementById("menuBar");
+  function showSearchBar() {
+    var x = document.getElementById("Search-Bar");
     if (x.style.display === "block") {
       x.style.display = "none";
     } else {
@@ -52,8 +60,8 @@ function App() {
 
   return (
     <section>
-      <Header darkMode1={darkPrimary} />
-
+      <Header onShow={showSearchBar} />
+      <SearchBar />
       <section className="p-3 pb-5 mb-2">
         <Masonry
           breakpointCols={breakpoints}
@@ -63,7 +71,6 @@ function App() {
           {notes.map((noteItem, index) => {
             return (
               <Note
-                darkMode1={darkPrimary}
                 key={index}
                 id={index}
                 title={noteItem.title}
@@ -75,17 +82,18 @@ function App() {
         </Masonry>
       </section>
 
-      <TextArea
-        onHide={hideBox}
-        onAdd={addNote}
-        darkMode1={darkPrimary}
-        darkMode2={darkMain}
-      />
-      <BottomAppBar
-        onShow={showBox}
-        onClickMenu={showMenuBar}
-        darkMode2={darkMain}
-      />
+      <TextArea onHide={hideBox} onAdd={addNote} />
+
+      <div class="Add-btn">
+        <StyledFab
+          onClick={showBox}
+          className="text-white"
+          style={{ backgroundColor: "#00ADB5" }}
+          aria-label="add"
+        >
+          <AddIcon />
+        </StyledFab>
+      </div>
     </section>
   );
 }
