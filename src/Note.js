@@ -6,11 +6,17 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { IconButton } from "@mui/material";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
 
 const ITEM_HEIGHT = 48;
 const currentDate = new Date().toLocaleDateString();
 
 function Note(props) {
+  const [show, setShow] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -37,8 +43,17 @@ function Note(props) {
     content = nullConent;
   }
 
+  const handleClickOpen = () => {
+    setShow(true);
+  };
+
+  const handleHide = () => {
+    setShow(false);
+  };
+
   function handleDelete() {
     props.onDelete(props.id);
+    setShow(false);
     setAnchorEl(null);
   }
 
@@ -47,7 +62,6 @@ function Note(props) {
       sx={{ minWidth: 275 }}
       variant="outlined"
       style={{ backgroundColor: "#B5EAEA" }}
-      className="border-light"
     >
       <div className="d-flex justify-content-between align-items-center px-2">
         <IconButton
@@ -75,8 +89,35 @@ function Note(props) {
             },
           }}
         >
-          <MenuItem onClick={handleDelete}>Delete</MenuItem>
+          <MenuItem onClick={handleClickOpen}>Delete</MenuItem>
+          <Dialog
+            open={show}
+            onClose={handleHide}
+            aria-labelledby="alert-dialog-title"
+            aria-describedby="alert-dialog-description"
+          >
+            <DialogTitle id="alert-dialog-title">
+              {"Confirm Delete"}
+            </DialogTitle>
+            <DialogContent>
+              <DialogContentText id="alert-dialog-description">
+                Are you sure you want to delete this note
+              </DialogContentText>
+            </DialogContent>
+            <DialogActions>
+              <button
+                className="btn btn-sm btn-light me-3"
+                onClick={handleHide}
+              >
+                Cancel
+              </button>
+              <button className="btn btn-sm btn-danger" onClick={handleDelete}>
+                Delete
+              </button>
+            </DialogActions>
+          </Dialog>
           <br />
+
           <MenuItem onClick={handleClose}>Edit</MenuItem>
         </Menu>
       </div>

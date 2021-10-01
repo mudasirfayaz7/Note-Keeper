@@ -7,7 +7,6 @@ import SearchIcon from "@mui/icons-material/Search";
 import IconButton from "@mui/material/IconButton";
 import MuiAppBar from "@mui/material/AppBar";
 import CssBaseline from "@mui/material/CssBaseline";
-
 import AccountMenu from "./AccountMenu";
 
 const drawerWidth = 240;
@@ -79,7 +78,8 @@ export default function Header(props) {
         <CssBaseline />
         <AppBar
           position="static"
-          className="bg-light border-light "
+          className="border-light "
+          style={{ backgroundColor: "#f0f0f0" }}
           variant="outlined"
         >
           <Toolbar>
@@ -105,6 +105,7 @@ export default function Header(props) {
             </IconButton>
 
             <Box sx={{ flexGrow: 1 }} />
+
             <AccountMenu />
           </Toolbar>
         </AppBar>

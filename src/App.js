@@ -7,6 +7,7 @@ import Masonry from "react-masonry-css";
 import { Fab } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import AddIcon from "@mui/icons-material/Add";
+import SimpleBottomNavigation from "./BottomNavigation";
 
 const StyledFab = styled(Fab)({
   position: "absolute",
@@ -87,13 +88,13 @@ function App() {
       <div class="Add-btn">
         <StyledFab
           onClick={showBox}
-          className="text-white"
-          style={{ backgroundColor: "#00ADB5" }}
+          className="text-white bg-info"
           aria-label="add"
         >
           <AddIcon />
         </StyledFab>
       </div>
+      <SimpleBottomNavigation />
     </section>
   );
 }

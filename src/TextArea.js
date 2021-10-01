@@ -31,12 +31,11 @@ export default function TextArea(props) {
 
   return (
     <div id="box" className="box fixed">
-      <div className="card " style={{ backgroundColor: "#00ADB5" }}>
-        <div className="card-body " style={{ backgroundColor: "#00ADB5" }}>
+      <div className="card  bg-info">
+        <div className="card-body  bg-info">
           <form action="/">
             <input
-              className=" text-white"
-              style={{ backgroundColor: "#00ADB5" }}
+              className=" text-white bg-info"
               onChange={handleChange}
               type="text"
               name="title"
@@ -47,8 +46,7 @@ export default function TextArea(props) {
             />
             <br />
             <textarea
-              className="text-white"
-              style={{ backgroundColor: "#00ADB5" }}
+              className="text-white bg-info"
               onChange={handleChange}
               name="content"
               rows="2"

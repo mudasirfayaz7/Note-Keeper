@@ -33,7 +33,7 @@ export default function AccountMenu() {
           textAlign: "center",
         }}
       >
-        <Typography className="text-secondary me-2 fs-6 fw-bold">
+        <Typography className="text-secondary me-2 fs-6 fw-bold d-none d-md-block">
           Mudasir Fayaz
           <KeyboardArrowDownIcon />
         </Typography>
