@@ -79,7 +79,7 @@ export default function Header(props) {
         <AppBar
           position="static"
           className="border-light "
-          style={{ backgroundColor: "#f0f0f0" }}
+          style={{ backgroundColor: "#e0e0e0" }}
           variant="outlined"
         >
           <Toolbar>

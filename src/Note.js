@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -11,11 +11,13 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import EditNote from "./EditNote";
 
 const ITEM_HEIGHT = 48;
 const currentDate = new Date().toLocaleDateString();
 
 function Note(props) {
+  const [slide, setSlide] = React.useState(false);
   const [show, setShow] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -32,9 +34,12 @@ function Note(props) {
 
   let title = props.title;
   let newTitle = title.substring(0, 20) + " .....";
+  let nullTitle = "No Title";
 
   if (title.length > 20) {
     title = newTitle;
+  } else if (title.length === 0) {
+    title = nullTitle;
   }
 
   if (content.length > 160) {
@@ -42,6 +47,15 @@ function Note(props) {
   } else if (content.length < 1) {
     content = nullConent;
   }
+  const handleClickSlide = () => {
+    setSlide(true);
+  };
+
+  const handleSlide = () => {
+    setSlide(false);
+    setAnchorEl(null);
+    title = EventTarget;
+  };
 
   const handleClickOpen = () => {
     setShow(true);
@@ -118,7 +132,13 @@ function Note(props) {
           </Dialog>
           <br />
 
-          <MenuItem onClick={handleClose}>Edit</MenuItem>
+          <MenuItem onClick={handleClickSlide}>Edit</MenuItem>
+          <EditNote
+            onClose={handleSlide}
+            onOpen={slide}
+            Title={title}
+            Content={content}
+          />
         </Menu>
       </div>
       <CardContent className="text-secondary pb-2 pt-0">

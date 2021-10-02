@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import * as React from "react";
 import Header from "./Header";
 import SearchBar from "./SearchBar";
 import TextArea from "./TextArea";
@@ -17,7 +17,7 @@ const StyledFab = styled(Fab)({
 });
 
 function App() {
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = React.useState([]);
   const breakpoints = {
     default: 4,
     1174: 3,
@@ -46,10 +46,7 @@ function App() {
       x.style.display = "block";
     }
   }
-  function hideBox() {
-    var x = document.getElementById("box");
-    x.style.display = "none";
-  }
+
   function showSearchBar() {
     var x = document.getElementById("Search-Bar");
     if (x.style.display === "block") {
@@ -83,7 +80,7 @@ function App() {
         </Masonry>
       </section>
 
-      <TextArea onHide={hideBox} onAdd={addNote} />
+      <TextArea onAdd={addNote} />
 
       <div class="Add-btn">
         <StyledFab

@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import * as React from "react";
 import { Fab } from "@material-ui/core";
 import AddIcon from "@mui/icons-material/Add";
 import CloseIcon from "@mui/icons-material/Close";
 
 export default function TextArea(props) {
-  const [noteContent, setNoteContent] = useState({
+  const [noteContent, setNoteContent] = React.useState({
     title: "",
     content: "",
   });
@@ -12,6 +12,15 @@ export default function TextArea(props) {
   function handleChange(event) {
     const { name, value } = event.target;
     setNoteContent((prevNote) => ({ ...prevNote, [name]: value }));
+  }
+
+  function hideBox() {
+    var x = document.getElementById("box");
+    x.style.display = "none";
+    setNoteContent({
+      title: "",
+      content: "",
+    });
   }
 
   function submitNote(event) {
@@ -57,6 +66,7 @@ export default function TextArea(props) {
             <br />
             <div className="d-flex justify-content-between text-align-center mt-4">
               <Fab
+                size="small"
                 className=" text-secondary"
                 type="submit"
                 variant="extended"
@@ -71,7 +81,7 @@ export default function TextArea(props) {
               <div
                 style={{ cursor: "pointer" }}
                 className="mt-auto text-white"
-                onClick={props.onHide}
+                onClick={hideBox}
               >
                 <CloseIcon />
               </div>

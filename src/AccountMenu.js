@@ -12,6 +12,7 @@ import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import SimpleDialogDemo from "./BackupAcc";
 
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -39,8 +40,12 @@ export default function AccountMenu() {
         </Typography>
 
         <Tooltip title="Account settings">
-          <IconButton size="small" sx={{ ml: 2 }}>
-            <Avatar sx={{ width: 32, height: 32 }}>M</Avatar>
+          <IconButton>
+            <Avatar
+              sx={{ width: 32, height: 32 }}
+              alt="Remy Sharp"
+              src="https://scontent.fsxr1-1.fna.fbcdn.net/v/t31.18172-8/22550112_1945742069083981_1701312093501692257_o.jpg?_nc_cat=103&ccb=1-5&_nc_sid=174925&_nc_ohc=j9HkoQTAWPoAX9xPPet&_nc_ht=scontent.fsxr1-1.fna&oh=ab7973ec8249105f67d0e450458e0367&oe=617D36BF"
+            />
           </IconButton>
         </Tooltip>
       </Box>
@@ -92,8 +97,8 @@ export default function AccountMenu() {
           <ListItemIcon>
             <PersonAdd fontSize="small" />
           </ListItemIcon>
-          Add another account
-        </MenuItem>{" "}
+          <SimpleDialogDemo />
+        </MenuItem>
         <br />
         <MenuItem className="mb-md-2 mb-0">
           <ListItemIcon>

@@ -33,7 +33,7 @@ section {
 .box {
   display: none;
   border-radius: 4px;
-  width: 60%;
+  width: 50%;
   position: fixed;
   top: 60%;
   left: 50%;
