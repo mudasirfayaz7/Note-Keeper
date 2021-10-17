@@ -1,13 +1,13 @@
 import * as React from "react";
-import Header from "./Header";
-import SearchBar from "./SearchBar";
-import TextArea from "./TextArea";
-import Note from "./Note";
+import Header from "./components/Header";
+import SearchBar from "./components/SearchBar";
+import TextArea from "./components/TextArea";
+import Note from "./components/Note";
 import Masonry from "react-masonry-css";
 import { Fab } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import AddIcon from "@mui/icons-material/Add";
-import SimpleBottomNavigation from "./BottomNavigation";
+import SimpleBottomNavigation from "./components/BottomNavigation";
 
 const StyledFab = styled(Fab)({
   position: "absolute",

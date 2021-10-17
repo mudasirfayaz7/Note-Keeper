@@ -20,17 +20,17 @@ export default function SimpleBottomNavigation() {
         }}
       >
         <BottomNavigationAction
-          className="text-white"
+          className="text-light"
           label="Notes"
           icon={<StickyNote2Icon />}
         />
         <BottomNavigationAction
-          className="text-white"
+          className="text-light"
           label="Favorites"
           icon={<FavoriteIcon />}
         />
         <BottomNavigationAction
-          className="text-white"
+          className="text-light"
           label="Nearby"
           icon={<LocationOnIcon />}
         />

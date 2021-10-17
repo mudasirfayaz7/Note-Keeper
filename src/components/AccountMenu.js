@@ -12,7 +12,6 @@ import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import SimpleDialogDemo from "./BackupAcc";
 
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -97,7 +96,7 @@ export default function AccountMenu() {
           <ListItemIcon>
             <PersonAdd fontSize="small" />
           </ListItemIcon>
-          <SimpleDialogDemo />
+          Add Another Account
         </MenuItem>
         <br />
         <MenuItem className="mb-md-2 mb-0">

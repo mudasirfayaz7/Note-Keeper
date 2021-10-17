@@ -11,22 +11,16 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import EditNote from "./EditNote";
+import SimpleSnackbar from "./Snackbar";
 
 const ITEM_HEIGHT = 48;
 const currentDate = new Date().toLocaleDateString();
 
 function Note(props) {
-  const [slide, setSlide] = React.useState(false);
   const [show, setShow] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const [snack, setSnack] = React.useState(false);
 
   let content = props.content;
   let newContent = content.substring(0, 160) + " ....";
@@ -47,14 +41,20 @@ function Note(props) {
   } else if (content.length < 1) {
     content = nullConent;
   }
-  const handleClickSlide = () => {
-    setSlide(true);
+
+  const handleSnack = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setSnack(false);
   };
 
-  const handleSlide = () => {
-    setSlide(false);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
     setAnchorEl(null);
-    title = EventTarget;
   };
 
   const handleClickOpen = () => {
@@ -67,6 +67,7 @@ function Note(props) {
 
   function handleDelete() {
     props.onDelete(props.id);
+    setSnack(true);
     setShow(false);
     setAnchorEl(null);
   }
@@ -125,20 +126,16 @@ function Note(props) {
               >
                 Cancel
               </button>
+
               <button className="btn btn-sm btn-danger" onClick={handleDelete}>
                 Delete
               </button>
+              <SimpleSnackbar open={snack} hideSnack={handleSnack} />
             </DialogActions>
           </Dialog>
           <br />
 
-          <MenuItem onClick={handleClickSlide}>Edit</MenuItem>
-          <EditNote
-            onClose={handleSlide}
-            onOpen={slide}
-            Title={title}
-            Content={content}
-          />
+          <MenuItem onClick={handleClose}>Edit</MenuItem>
         </Menu>
       </div>
       <CardContent className="text-secondary pb-2 pt-0">
